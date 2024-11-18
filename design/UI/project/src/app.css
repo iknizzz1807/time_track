@@ -1,0 +1,259 @@
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #f5f6fa;
+  --text-color: #2c3e50;
+  --background-color: #ffffff;
+  --card-background: #ffffff;
+  --border-color: #e1e8ed;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme variables */
+.dark {
+  --primary-color: #64b5f6;
+  --secondary-color: #2c3e50;
+  --text-color: #ecf0f1;
+  --background-color: #1a1a1a;
+  --card-background: #2c3e50;
+  --border-color: #34495e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* Timer Section */
+.timer-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.timer-container {
+  background: var(--card-background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.timer-display {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+}
+
+.activity-select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--text-color);
+}
+
+/* Today's Activities */
+.today-activities {
+  margin-top: 2rem;
+}
+
+.activity-cards {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.activity-card {
+  background: var(--card-background);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  background: var(--secondary-color);
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.progress {
+  background: var(--primary-color);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Calendar Section */
+.calendar-section {
+  margin: 2rem 0;
+  background: var(--card-background);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.calendar {
+  margin: 1rem 0;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.filter-select {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--text-color);
+}
+
+/* Charts Section */
+.charts-section {
+  margin: 2rem 0;
+}
+
+.charts-container {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+canvas {
+  background: var(--card-background);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+/* Streaks Section */
+.streaks-section {
+  margin: 2rem 0;
+}
+
+.streak-card,
+.level-card {
+  background: var(--card-background);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.streak-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.streak-count {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.motivation-message {
+  color: var(--success-color);
+}
+
+.hours-count {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .activity-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .charts-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .charts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

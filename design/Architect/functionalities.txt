@@ -1,0 +1,33 @@
+1. Timer Interface:
+A central timer to track activities in real-time.
+Start, Pause, and Reset buttons.
+Option to select or add an activity before starting the timer.
+
+2. Today's Tracked Activities:
+A clean list or card-based layout showing all activities tracked today.
+Each activity card should display the activity name, total time spent, and a small progress bar or percentage.
+This needs to be in the same page with the timer interface.
+
+3. History with Calendar:
+A calendar view to select past dates and view the tracked activities and total time for that day.
+Include filters for specific activities or time ranges.
+
+4. Visualization (Charts and Graphs):
+A dedicated section to display different types of visualizations:
+A bar chart for time spent on each activity per day/week.
+A pie chart showing activity distribution over a selected period.
+A line chart for streak progress or trends over time.
+
+5. Streaks and Motivation:
+A streak tracker to encourage daily tracking.
+Display motivational messages for milestones, e.g., “Keep it up! You're on a 7-day streak!”
+Show activity levels, such as "Novice," "Intermediate," or "Expert," based on total hours tracked for that activity.
+Add a progress bar to visualize hours toward the "10,000-hour expert" milestone.
+
+6. Style Preferences:
+Clean, minimalistic design with soft colors.
+Intuitive navigation and easy-to-read fonts.
+Use icons and illustrations to make the interface engaging.
+Deliver the design as a mobile app layout with clear attention to UX and aesthetics.
+
+Implement all the pages, has a working toggle theme button, using only html css and javascript. You dont need to implement the timer functionalities, just the UIs.

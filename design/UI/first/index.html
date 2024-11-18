@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Time Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Time Tracker</h1>
+            <button id="themeToggle">🌙</button>
+        </header>
+
+        <div class="timer-section">
+            <div class="category-input">
+                <select id="categorySelect">
+                    <option value="">Select Category</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Study">Study</option>
+                    <option value="Work">Work</option>
+                    <option value="custom">+ Add Custom Category</option>
+                </select>
+                <input type="text" id="customCategory" placeholder="Enter custom category" class="hidden">
+            </div>
+            <div class="timer-display">00:00:00</div>
+            <button id="startStop" class="primary-btn">Start</button>
+        </div>
+
+        <div class="activities-list">
+            <h2>Today's Activities</h2>
+            <div id="activitiesList"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
