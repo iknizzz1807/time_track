@@ -43,9 +43,11 @@ body {
 /* Navigation */
 .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--bg-secondary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
 }
 
@@ -115,7 +117,7 @@ body {
 
 .activity-select {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
   background: var(--card-background);
@@ -180,7 +182,7 @@ body {
 
 .filter-select {
   flex: 1;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
   background: var(--card-background);
