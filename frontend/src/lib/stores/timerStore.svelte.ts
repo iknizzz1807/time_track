@@ -1,3 +1,4 @@
+//This has live update for set and get data, used for timer
 type Time = {
   hours: number;
   minutes: number;

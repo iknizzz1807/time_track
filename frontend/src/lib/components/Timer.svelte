@@ -1,47 +1,8 @@
 <script lang="ts">
   import { createTimer } from "$lib/stores/timerStore.svelte";
-  // type Time = {
-  //   hours: number;
-  //   minutes: number;
-  //   seconds: number;
-  // };
 
   let isRunning: boolean = $state(false);
   const timer = createTimer();
-  // let time: Time = $state({
-  //   hours: 0,
-  //   minutes: 0,
-  //   seconds: 0,
-  // });
-
-  // function startTimer() {
-  //   isRunning = !isRunning;
-  // }
-
-  // function resetTimer() {
-  //   time = { hours: 0, minutes: 0, seconds: 0 };
-  //   isRunning = false;
-  // }
-
-  // let interval: any;
-
-  // $effect(() => {
-  //   if (isRunning) {
-  //     interval = setInterval(() => {
-  //       time.seconds += 1;
-  //       if (time.seconds >= 60) {
-  //         time.seconds = 0;
-  //         time.minutes += 1;
-  //       }
-  //       if (time.minutes >= 60) {
-  //         time.minutes = 0;
-  //         time.hours += 1;
-  //       }
-  //     }, 1000);
-  //   } else {
-  //     clearInterval(interval);
-  //   }
-  // });
 
   function formatTime(value: number): string {
     return value.toString().padStart(2, "0");
@@ -52,7 +13,22 @@
 
 <section class="timer-section">
   <div class="timer-container">
-    <button onclick={() => timer.minimize()}>[ ]</button>
+    <div style="display: flex; justify-content: end">
+      <button
+        onclick={() => {
+          if (!timer.checkIsMinimized()) {
+            timer.minimize();
+          } else timer.maximize();
+        }}
+        class="btn"
+        style="border: none; background-color: transparent; color: var(--text-color)"
+        ><i
+          class={timer.checkIsMinimized()
+            ? "fa-solid fa-expand"
+            : "fa-solid fa-compress"}
+        ></i></button
+      >
+    </div>
     <div class="timer-display">
       {formatTime(timer.get().hours)}:{formatTime(
         timer.get().minutes

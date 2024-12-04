@@ -6,28 +6,71 @@
   function formatTime(value: number): string {
     return value.toString().padStart(2, "0");
   }
+
+  let isRunning: boolean = $state(false);
 </script>
 
+<!-- svelte-ignore a11y_consider_explicit_label -->
+
 {#if timer.checkIsMinimized()}
-  <div class="container">
-    {formatTime(timer.get().hours)}:{formatTime(
-      timer.get().minutes
-    )}:{formatTime(timer.get().seconds)}
-    <button onclick={() => timer.maximize()}>[X]</button>
+  <div style="display: flex; justify-content: center">
+    <div class="container">
+      <div class="timer-display" style="font-size: 30px; margin: 0">
+        {formatTime(timer.get().hours)}:{formatTime(
+          timer.get().minutes
+        )}:{formatTime(timer.get().seconds)}
+      </div>
+
+      <div class="timer-controls" style="margin: 0;">
+        <button
+          class="btn btn-primary"
+          onclick={() => {
+            if (!isRunning) {
+              timer.start();
+              isRunning = true;
+            } else {
+              timer.pause();
+              isRunning = false;
+            }
+          }}
+        >
+          <i class="fas {isRunning ? 'fa-pause' : 'fa-play'}"></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          onclick={() => {
+            timer.stop();
+            isRunning = false;
+          }}
+        >
+          <i class="fas fa-stop"></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          onclick={() => {
+            timer.reset();
+            isRunning = false;
+          }}
+        >
+          <i class="fas fa-redo"></i>
+        </button>
+      </div>
+    </div>
   </div>
 {/if}
 
 <style>
   .container {
     position: fixed;
-    /* bottom: 10px;
-    right: 10px; */
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    right: 50%;
-    bottom: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 0.5rem;
+    bottom: 12px;
+    box-shadow: var(--shadow);
   }
 </style>
