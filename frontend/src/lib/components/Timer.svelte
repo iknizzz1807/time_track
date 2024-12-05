@@ -1,8 +1,11 @@
 <script lang="ts">
   import { createTimer } from "$lib/stores/timerStore.svelte";
 
-  let isRunning: boolean = $state(false);
   const timer = createTimer();
+
+  let targetActivity: string = $state("");
+
+  let trackableActivities: string[] = $state(["Coding", "Reading", "Exercise"]);
 
   function formatTime(value: number): string {
     return value.toString().padStart(2, "0");
@@ -37,42 +40,49 @@
     <div class="timer-controls">
       <button
         class="btn btn-primary"
+        disabled={!timer.getTrackingActivity()}
         onclick={() => {
-          if (!isRunning) {
+          if (!timer.isRunning()) {
             timer.start();
-            isRunning = true;
           } else {
             timer.pause();
-            isRunning = false;
           }
         }}
       >
-        <i class="fas {isRunning ? 'fa-pause' : 'fa-play'}"></i>
+        <i class="fas {timer.isRunning() ? 'fa-pause' : 'fa-play'}"></i>
       </button>
       <button
         class="btn btn-danger"
+        disabled={!timer.getTrackingActivity()}
         onclick={() => {
           timer.stop();
-          isRunning = false;
         }}
       >
         <i class="fas fa-stop"></i>
       </button>
       <button
         class="btn btn-danger"
+        disabled={!timer.getTrackingActivity()}
         onclick={() => {
           timer.reset();
-          isRunning = false;
         }}
       >
         <i class="fas fa-redo"></i>
       </button>
     </div>
-    <select class="activity-select">
+    <select
+      class="activity-select"
+      bind:value={targetActivity}
+      onchange={() => timer.setTrackingActivity(targetActivity)}
+      disabled={timer.isRunning() || timer.isPausing()}
+    >
       <option value="">Select Activity</option>
-      <option value="coding">Coding</option>
+      <!-- <option value="coding">Coding</option>
       <option value="reading">Reading</option>
-      <option value="exercise">Exercise</option>
+      <option value="exercise">Exercise</option> -->
+      {#each trackableActivities as activity}
+        <option value={activity}>{activity}</option>
+      {/each}
     </select>
   </div>
 </section>

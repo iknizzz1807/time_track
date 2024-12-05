@@ -12,9 +12,12 @@ let time: Time = $state({
 });
 
 let isRunning: boolean = $state(false);
+let isPausing: boolean = $state(false);
 let isMinimized: boolean = $state(false);
 
 let interval: any;
+
+let trackingActivity: string = $state("");
 
 export function createTimer() {
   $effect(() => {
@@ -38,9 +41,12 @@ export function createTimer() {
   return {
     start() {
       isRunning = true;
+      isPausing = false;
     },
     stop() {
       isRunning = false;
+      isPausing = false;
+      trackingActivity = "";
       time = {
         hours: 0,
         minutes: 0,
@@ -50,9 +56,16 @@ export function createTimer() {
     },
     pause() {
       isRunning = false;
+      isPausing = true;
     },
     reset() {
-      this.stop();
+      isRunning = false;
+      isPausing = false;
+      time = {
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      };
       // Do not need to write to db
     },
     checkIsMinimized() {
@@ -66,6 +79,18 @@ export function createTimer() {
     },
     get() {
       return time;
+    },
+    isRunning() {
+      return isRunning;
+    },
+    getTrackingActivity() {
+      return trackingActivity;
+    },
+    setTrackingActivity(activity: string) {
+      trackingActivity = activity;
+    },
+    isPausing() {
+      return isPausing;
     },
   };
 }
