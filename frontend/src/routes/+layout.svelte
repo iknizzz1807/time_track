@@ -3,6 +3,7 @@
   import type { LayoutData } from "./$types";
   // import { page } from "$app/stores";
   import "../app.css";
+  import "toastify-js/src/toastify.css";
   import NavBar from "$lib/components/NavBar.svelte";
   import MinimizedTimer from "$lib/components/MinimizedTimer.svelte";
 

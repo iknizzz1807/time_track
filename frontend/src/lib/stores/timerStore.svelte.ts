@@ -46,7 +46,6 @@ export function createTimer() {
     stop() {
       isRunning = false;
       isPausing = false;
-      trackingActivity = "";
       time = {
         hours: 0,
         minutes: 0,

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createTimer } from "$lib/stores/timerStore.svelte";
+  import { showOKToast, showWarningToast } from "$lib/utils/toast";
 
   const timer = createTimer();
 
@@ -29,22 +30,27 @@
         <div class="timer-controls" style="margin: 0;">
           <button
             class="btn btn-primary"
-            disabled={!timer.getTrackingActivity()}
             onclick={() => {
-              if (!timer.isRunning()) {
-                timer.start();
+              if (!timer.getTrackingActivity()) {
+                showWarningToast("Please choose an activity");
               } else {
-                timer.pause();
+                if (!timer.isRunning()) {
+                  timer.start();
+                } else {
+                  timer.pause();
+                }
               }
             }}
           >
             <i class="fas {timer.isRunning() ? 'fa-pause' : 'fa-play'}"></i>
           </button>
+
           <button
             class="btn btn-danger"
             disabled={!timer.getTrackingActivity()}
             onclick={() => {
               timer.stop();
+              showOKToast("Successfully tracked");
             }}
           >
             <i class="fas fa-stop"></i>
