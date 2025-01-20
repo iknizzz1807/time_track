@@ -117,7 +117,29 @@ body {
 }
 
 .activity-select {
-  width: 100%;
+  width: 60%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--text-color);
+}
+
+.select-create-activity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-activity {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-activity {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
